@@ -1,4 +1,6 @@
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
 
 /**
  * Реализовать алгоритм пирамидальной сортировки (HeapSort)
@@ -7,29 +9,27 @@ public class Task02 {
 
     public static void main(String[] args) {
 
-        int[] myArray = new int[] { 8, 3, 2, 7, -9, 1, 4 };
+        Scanner input = new Scanner(System.in);
+        System.out.println("Сколько элементов хотите ввести? ");
+        int sizeArr = input.nextInt();
 
-        for (int j = myArray.length - 1; j >= 0; j--) {
-            // int oops = 0;
-            for (int i = (myArray.length / 2 - 1); i >= 0; i--) {
+        int[] myArray = new int[] { 8, 3, 2, 7, 12, -9, 1, 4 };
+        if (sizeArr % 2 != 0)
+            sizeArr++;
+
+        
+
+        for (int j = 0; j < myArray.length; j++) {
+
+            for (int i = (myArray.length - 1) / 2; i >= 0; i--) {
                 LargestFromHeap(myArray, i);
             }
-
-            // System.out.printf("%d" + " ", myArray[0]);
-            // oops++;
-            // myArray[0]=-1;
-            // int temp = myArray[myArray.length - 1];
-            // myArray[myArray.length - 1] = myArray[0];
-            // myArray[0] = temp;
-
+            if (myArray[0] != -2147483648) {
+                System.out.printf("%d" + " ", myArray[0]);
+            }
+            myArray[0] = -2_147_483_648;
         }
-        // System.out.println(myArray.toString());
-        System.out.println();
-        ArrayList<Integer> myList=new ArrayList<>();
-        
-        for (int i : myArray) {
-            System.out.print(i + " ");
-        }
+
     }
 
     public static void LargestFromHeap(int[] array, int i) {
